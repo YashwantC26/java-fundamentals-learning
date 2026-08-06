@@ -6,17 +6,20 @@ class Information {
     void genProfile() {
         System.out.println("Generate User Profile? yes/no ");
         String response = scanner.nextLine();
-        if (response.equals("yes")) {
+
+        while(!response.equalsIgnoreCase("yes") && !response.equalsIgnoreCase("no")) {
+            System.out.println("Choose yes/no: ");
+            response = scanner.nextLine();
+        }
+        if (response.equalsIgnoreCase("yes")) {
             getInfo();
         } else System.out.println("Exiting...");
-        
     }
     void getInfo() {
-        Scanner scanner = new Scanner(System.in);
 
-        int age = 0;
-        double hourlyWage = 0;
-        double targetHours = 0;
+        int age;
+        double hourlyWage;
+        double targetHours;
         System.out.println("What is your name: ");
         String name = scanner.nextLine();
 
@@ -42,7 +45,9 @@ class Information {
             System.out.println("Please input valid work hours:");
             scanner.next();
         } targetHours = scanner.nextDouble();
-        scanner.close();
+
+        scanner.next();
+
         double weeklyWages = hourlyWage * targetHours;
 
         System.out.println("""
@@ -65,7 +70,7 @@ class Information {
 class UserProfile {
     public static void main(String[] args) {
         Information obtainInfo = new Information();
-        obtainInfo.getInfo();
 
+        obtainInfo.genProfile();
     }
 }
