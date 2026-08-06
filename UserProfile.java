@@ -1,6 +1,16 @@
 import java.util.Scanner;
 
 class Information {
+    Scanner scanner = new Scanner(System.in);
+
+    void genProfile() {
+        System.out.println("Generate User Profile? yes/no ");
+        String response = scanner.nextLine();
+        if (response.equals("yes")) {
+            getInfo();
+        } else System.out.println("Exiting...");
+        
+    }
     void getInfo() {
         Scanner scanner = new Scanner(System.in);
 
