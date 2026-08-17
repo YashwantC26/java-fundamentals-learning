@@ -2,11 +2,13 @@ class Vehicle {
     int passengers;
     double fuelCapacity;
     double mpg;
+    String name;
 
-    Vehicle (int passengers, double fuelCapacity, double mpg) {
+    Vehicle (int passengers, double fuelCapacity, double mpg, String name) {
         this.passengers = passengers;
         this.fuelCapacity = fuelCapacity;
         this.mpg = mpg;
+        this.name = name;
     }
     int calculateRange() {
         return (int) (fuelCapacity * mpg);
@@ -16,8 +18,8 @@ class Vehicle {
         return (short) miles / this.mpg;
     }
 
-    void displayInfo(String name) {
-        System.out.println(name + " | fuel capacity: " + this.fuelCapacity + " | overall range: " +
+    void displayInfo() {
+        System.out.println(this.name + " | fuel capacity: " + this.fuelCapacity + " | overall range: " +
                 this.calculateRange() + " | trip fuel needed: " + this.fuelNeeded(500));
     }
 
@@ -26,12 +28,15 @@ class Vehicle {
 
 class VehicleInfo {
     public static void main(String[] args) {
-        Vehicle minivan = new Vehicle(7, 20, 17);
-        Vehicle sportsCar = new Vehicle(2, 14, 13);
-        Vehicle truck = new Vehicle(2, 30, 25);
+        Vehicle minivan = new Vehicle(7, 20, 17, "Minivan");
+        Vehicle sportsCar = new Vehicle(2, 14, 13, "Sports Car");
+        Vehicle truck = new Vehicle(2, 30, 25, "Truck");
 
-        minivan.displayInfo("minivan");
-        sportsCar.displayInfo("Sports Car");
+        Vehicle[] fleet = {minivan, sportsCar, truck};
+
+        for(Vehicle vehicle : fleet) {
+            vehicle.displayInfo();
+        }
 
 
     }
